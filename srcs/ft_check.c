@@ -1,63 +1,48 @@
 # include "netwhat_calc.h"
 
-int		ft_slash(char *s)
-{
-	int		i;
-	int		check;
-
-	i = 0;
-	check = 0;
-	while (s[i])
-	{
-		if (s[i] == '/')
-			check++;
-		i++;
-	}
-	return (check);
-}
-
-int		ft_format(char *s)
-{
-	int		i;
-
-	i = 0;
-	if (ft_slash(s) > 1)
-		return (0);
-	while (s[i] == ' ' || (s[i] >= 9 && s[i] <= 13))
-		i++;
-	if (s[i] == '\n')
-		return (0);
-	if (s[i] == '/')
-		if ((s[i + 1] >= '0' && s[i + 1] <= '9') || s[i + 1] == ' ')
-			i++;
-	while (s[i] != '\n')
-	{
-		if (s[i] == '.' || s[i] == '/')
-		{
-			if (s[i + 1] < '0' || s[i + 1] > '9')
-				return (0);
-		}
-		else if (s[i] == ' ' || (s[i] >= 9 && s[i] <= 13))
-		{
-			if (s[i + 1] >= '0' && s[i + 1] <= '9')
-				return (0);
-		}	
-		else if ((s[i] < '0' || s[i] > '9'))
-			return (0);
-		i++;
-	}
-	return (1);
-}
+/* Checks whether input is a valid IP address, CIDR notation or Submask and sents it to the corresponding functions */
+/* Otherwise it prints 'Invalid' */
 
 void	ft_check(char *s)
 {
 	int		i;
+	char	**input;
 
 	i = 0;
 	if (ft_format(s) != 0)
 	{
-		printf("\n%sValid%s\n\n", GRN, RESET);
+		while (s[i] != '\n')
+			i++;
+		s[i] = '\0';
+		if (ft_count(s, '.'))
+		{
+			input = ft_split(s, '.');
+			if (input)
+			{
+				if (ft_subcheck(input) == 1)
+				{
+					if (ft_count(s, '/') == 0)
+						printf("Submask\n\n");
+					else
+						printf("\n%sInvalid: submask can't be combined with CIDR%s\n\n", RED, RESET);
+				}
+				else if (ft_ipcheck(input))
+				{
+					if (ft_count(s, '/') == 1)
+						printf("IPCIDR: %c\n\n", ft_ipcheck(input));
+					else
+						printf("IP: %c\n\n", ft_ipcheck(input));
+				}
+				else
+					printf("\n%sInvalid IP or Submask%s\n\n", RED, RESET);
+				ft_free(input, ft_count(s, '.'));
+			}
+			else
+				printf("\n%sAllocation error, please contact creator%s\n\n", RED, RESET);
+		}
+		else
+			ft_cidr(s);
 	}
 	else
-		printf("\n%sInvalid%s\n\n", RED, RESET);
+		printf("\n%sInvalid input%s\n\n", RED, RESET);
 }
