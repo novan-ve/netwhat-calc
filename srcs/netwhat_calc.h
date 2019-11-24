@@ -24,5 +24,8 @@ int		ft_subcheck(char **s);
 char	ft_ipcheck(char **s);
 void	ft_cidr(char *s);
 void	ft_subcalc(char *s);
+void	ft_submask(char **s, char *str);
+void	ft_ip(char **s, char *str);
+int		ft_ispublic(char **s);
 
 #endif

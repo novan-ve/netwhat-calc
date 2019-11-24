@@ -22,7 +22,7 @@ void	ft_check(char *s)
 				if (ft_subcheck(input) == 1)
 				{
 					if (ft_count(s, '/') == 0)
-						printf("Submask\n\n");
+						ft_submask(input, s);
 					else
 						printf("\n%sInvalid: submask can't be combined with CIDR%s\n\n", RED, RESET);
 				}
@@ -31,7 +31,7 @@ void	ft_check(char *s)
 					if (ft_count(s, '/') == 1)
 						printf("IPCIDR: %c\n\n", ft_ipcheck(input));
 					else
-						printf("IP: %c\n\n", ft_ipcheck(input));
+						ft_ip(input, s);
 				}
 				else
 					printf("\n%sInvalid IP or Submask%s\n\n", RED, RESET);

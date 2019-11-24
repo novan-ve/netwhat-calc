@@ -3,7 +3,7 @@
 int	main(void)
 {
 	char	input[50];
-	char	ask[25] = "Enter IPv4/submask/CIDR:";
+	char	ask[28] = "Enter IPv4/subnetmask/CIDR:";
 	char	exit[21] = "(Type 'exit' to quit)";
 
 	printf("%s%s\t\t\t\t%s%s\n%s> ", YEL, ask, ITL, exit, RESET);
