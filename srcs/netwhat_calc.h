@@ -6,7 +6,7 @@
 /*   By: novan-ve <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/25 14:15:33 by novan-ve      #+#    #+#                 */
-/*   Updated: 2019/11/25 15:16:32 by novan-ve      ########   odam.nl         */
+/*   Updated: 2019/11/25 20:13:04 by novan-ve      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,9 @@ void	ft_subcalc(char *s);
 void	ft_submask(char **s, char *str);
 void	ft_ip(char **s, char *str);
 int		ft_ispublic(char **s);
+void	ft_ipcidr(char **s, char *str);
+char	*ft_itob(int nb);
+int		ft_btoi(char *bin);
+void	ft_net(char **s, int c);
 
 #endif

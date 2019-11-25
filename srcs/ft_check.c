@@ -6,7 +6,7 @@
 /*   By: novan-ve <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/25 13:07:06 by novan-ve      #+#    #+#                 */
-/*   Updated: 2019/11/25 15:52:41 by novan-ve      ########   odam.nl         */
+/*   Updated: 2019/11/25 17:19:56 by novan-ve      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_checkloop(char **input, char *s)
 	else if (ft_ipcheck(input))
 	{
 		if (ft_count(s, '/') == 1)
-			printf("IPCIDR: %c\n\n", ft_ipcheck(input));
+			ft_ipcidr(input, s);
 		else
 			ft_ip(input, s);
 	}

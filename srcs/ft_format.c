@@ -6,7 +6,7 @@
 /*   By: novan-ve <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/25 15:43:23 by novan-ve      #+#    #+#                 */
-/*   Updated: 2019/11/25 16:53:22 by novan-ve      ########   odam.nl         */
+/*   Updated: 2019/11/25 18:37:17 by novan-ve      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int		ft_formatloop(char *s, int i)
 		if (s[i + 1] >= '0' && s[i + 1] <= '9')
 			return (0);
 	}
-	else if ((s[i] < '0' || s[i] > '9'))
+	else if (s[i] < '0' || s[i] > '9')
 		return (0);
 	return (1);
 }
@@ -59,14 +59,13 @@ int		ft_format(char *s)
 		return (0);
 	if (ft_count(s, '.') != 4 && ft_count(s, '.') != 3 && ft_count(s, '.') != 0)
 		return (0);
-	if (s[i] == '/')
-	{
-		if (s[i + 1] >= '0' && s[i + 1] <= '9')
-			i++;
-		else
-			return (0);
-	}
+	if (s[i] == '/' && s[i + 1] >= '0' && s[i + 1] <= '9')
+		i++;
+	else if (s[i] == '/' && (s[i + 1] < '0' || s[i + 1] > '9'))
+		return (0);
 	else if (ft_count(s, '.') == 0 && ft_count(s, '/') == 1)
+		return (0);
+	if (atoi(s + i) < 0 || atoi(s + i) > 255)
 		return (0);
 	if (ft_count(s, '.') == 0 && (atoi(s + i) < 0 || atoi(s + i) > 32))
 		return (0);

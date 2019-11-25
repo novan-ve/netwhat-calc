@@ -6,7 +6,7 @@
 /*   By: novan-ve <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/25 14:12:42 by novan-ve      #+#    #+#                 */
-/*   Updated: 2019/11/25 15:54:21 by novan-ve      ########   odam.nl         */
+/*   Updated: 2019/11/25 18:32:41 by novan-ve      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	ft_cidr(char *s)
 {
 	unsigned long long a;
 
-	a = (unsigned long long)pow(2, 32 - atoi(s));
 	if (s[0] == '/')
 		s++;
+	a = (unsigned long long)pow(2, 32 - atoi(s));
 	printf("\n%s%sCIDR:%s\t\t\t\t%s/%s%s\n\n", CYN, UND, RESET, CYN, s, RESET);
 	ft_subcalc(s);
 	printf("Total Addresses:\t\t%s%lld%s\n", CYN, a, RESET);
