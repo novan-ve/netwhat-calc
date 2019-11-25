@@ -1,5 +1,18 @@
-#ifndef NETWHAT_CALC_
-# define NETWHAT_CALC_
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   netwhatcalc.h                                      :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: novan-ve <marvin@codam.nl>                   +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2019/11/25 14:15:33 by novan-ve      #+#    #+#                 */
+/*   Updated: 2019/11/25 15:16:32 by novan-ve      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef NETWHAT_CALC_H
+# define NETWHAT_CALC_H
+
 # define RED	"\x1B[91m"
 # define GRN	"\x1B[1;92m"
 # define YEL	"\x1B[1;93m"

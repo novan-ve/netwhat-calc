@@ -1,6 +1,16 @@
-#include "netwhat_calc.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   ft_count.c                                         :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: novan-ve <marvin@codam.nl>                   +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2019/11/25 14:49:19 by novan-ve      #+#    #+#                 */
+/*   Updated: 2019/11/25 14:49:28 by novan-ve      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
-/* Returns the amount of times char c appears in the given string */
+#include "netwhat_calc.h"
 
 int		ft_count(char *s, char c)
 {

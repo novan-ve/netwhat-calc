@@ -1,6 +1,16 @@
-# include "netwhat_calc.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   ft_submask.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: novan-ve <marvin@codam.nl>                   +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2019/11/25 15:49:00 by novan-ve      #+#    #+#                 */
+/*   Updated: 2019/11/25 15:50:45 by novan-ve      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
-/* Calculates and prints CIDR and amount of Available addresses for given subnet mask */
+#include "netwhat_calc.h"
 
 int		stoc(char **s)
 {
@@ -19,16 +29,19 @@ int		stoc(char **s)
 
 void	ft_submask(char **s, char *str)
 {
-	int		c;
+	int					c;
+	unsigned long long	r;
 
 	if (s[4] != NULL)
 		s++;
 	c = stoc(s);
-	printf("\n%s%sSubnet mask:%s\t\t\t%s%s%s\n\n", CYN, UND, RESET, CYN, str, RESET);
+	r = (unsigned long long)pow(2, 32 - c);
+	printf("\n%s%sSubnet mask:%s\t\t\t%s%s", CYN, UND, RESET, CYN, str);
+	printf("%s\n\n", RESET);
 	printf("CIDR:\t\t\t\t%s/%d%s\n", CYN, c, RESET);
-	printf("Total Addresses:\t\t%s%lld%s\n", CYN, (unsigned long long)pow(2, 32 - c), RESET);
+	printf("Total Addresses:\t\t%s%lld%s\n", CYN, r, RESET);
 	if (c == 32)
 		printf("Available Adresses:\t\t%s%d%s\n\n", CYN, 0, RESET);
 	else
-		printf("Available Adresses:\t\t%s%lld%s\n\n", CYN, (unsigned long long)pow(2, 32 - c) - 2, RESET);
+		printf("Available Adresses:\t\t%s%lld%s\n\n", CYN, r - 2, RESET);
 }

@@ -1,6 +1,16 @@
-# include "netwhat_calc.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   ft_ipcheck.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: novan-ve <marvin@codam.nl>                   +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2019/11/25 15:36:55 by novan-ve      #+#    #+#                 */
+/*   Updated: 2019/11/25 15:37:21 by novan-ve      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
-/* returns IP class of input, if input is not a valid IP address it returns 0 */
+#include "netwhat_calc.h"
 
 char		ft_ipcheck(char **s)
 {
@@ -14,7 +24,7 @@ char		ft_ipcheck(char **s)
 	i3 = atoi(s[2]);
 	i4 = atoi(s[3]);
 	if (i1 >= 1 && i1 <= 126)
-		return('A');
+		return ('A');
 	if (i1 >= 128 && i1 <= 191)
 		return ('B');
 	if (i1 >= 192 && i1 <= 223)

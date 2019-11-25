@@ -1,7 +1,54 @@
-# include "netwhat_calc.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   ft_format.c                                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: novan-ve <marvin@codam.nl>                   +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2019/11/25 15:43:23 by novan-ve      #+#    #+#                 */
+/*   Updated: 2019/11/25 16:53:22 by novan-ve      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
-/* Returns 1 if the given string is a valid IP address, CIDR notation or submask */
-/* Otherwise it returns 0 */
+#include "netwhat_calc.h"
+
+int		ft_formatloop2(char *s, int i)
+{
+	if (s[i + 1] < '0' || s[i + 1] > '9')
+		return (0);
+	if (s[i] == '/')
+	{
+		if (ft_count(s + i, '.') != 0 || atoi(s + i + 1) > 32)
+			return (0);
+		else if (atoi(s + i + i) < 0)
+			return (0);
+	}
+	if (s[i] == '.' && (atoi(s + i + 1) > 255 || atoi(s + i + 1) < 0))
+		return (0);
+	return (1);
+}
+
+int		ft_formatloop(char *s, int i)
+{
+	if (i == 0 && s[i] == '0' && s[i + 1] == 0)
+		return (0);
+	if (i != 0 && s[i] == '0')
+		if (s[i + 1] == '0' && s[i - 1] != '1' && s[i - 1] != '2')
+			return (0);
+	if (s[i] == '.' || s[i] == '/')
+	{
+		if (!ft_formatloop2(s, i))
+			return (0);
+	}
+	else if (s[i] == ' ' || (s[i] >= 9 && s[i] <= 13))
+	{
+		if (s[i + 1] >= '0' && s[i + 1] <= '9')
+			return (0);
+	}
+	else if ((s[i] < '0' || s[i] > '9'))
+		return (0);
+	return (1);
+}
 
 int		ft_format(char *s)
 {
@@ -25,21 +72,7 @@ int		ft_format(char *s)
 		return (0);
 	while (s[i] != '\n')
 	{
-		if (s[i] == '.' || s[i] == '/')
-		{
-			if (s[i + 1] < '0' || s[i + 1] > '9')
-				return (0);
-			if (s[i] == '/' && (ft_count(s + i, '.') != 0 || atoi(s + i + 1) > 32 || atoi(s + i + i) < 0))
-				return (0);
-			if (s[i] == '.' && (atoi(s + i + 1) > 255 || atoi(s + i + 1) < 0))
-				return (0);
-		}
-		else if (s[i] == ' ' || (s[i] >= 9 && s[i] <= 13))
-		{
-			if (s[i + 1] >= '0' && s[i + 1] <= '9')
-				return (0);
-		}
-		else if ((s[i] < '0' || s[i] > '9'))
+		if (!ft_formatloop(s, i))
 			return (0);
 		i++;
 	}
